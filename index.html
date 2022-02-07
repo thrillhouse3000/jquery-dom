@@ -124,8 +124,11 @@ $('#movieTitle').attr('minlength', '2').attr('required', true)
 
 $('#movieRating').attr('min', '0').attr('max', '10').attr('required', true)
 
+let movies = [];
+
 $('form').on('submit', function(e) {
   e.preventDefault();
+  movies[$('#movieTitle').val()] = $('#movieRating').val(); 
   $('#movieList').append(`<li>${$('#movieTitle').val()} : ${$('#movieRating').val()}<button>X</button></li>`)
 })
 
@@ -135,7 +138,7 @@ $('#movieList').on('click', 'button', function(){
 
 $('#movieSort').on('change', function() {
   if($('#movieSort').val() === 'alpha') {
-    $('#movieList').sort();
+    $.sort();
   } else if ($('#movieSort').val() === 'numeric'){
     $('#movieList').sort((a,b) => b - a);
   }
